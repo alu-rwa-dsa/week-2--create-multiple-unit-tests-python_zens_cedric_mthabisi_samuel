@@ -8,24 +8,24 @@ import unittest as ut
 class TrimTest(ut.TestCase):
 
     def test_left_trim(self):
-        self.assertEqual(im.custom_trim("   Hello there I am Tony"), "Hello there I am Tony")
+        self.assertEqual(im.remove_extra_spaces("   Hello there I am Tony"), "Hello there I am Tony")
 
     def test_right_trim(self):
-        self.assertEqual(im.custom_trim("Hello there I am Tony     "), "Hello there I am Tony")
+        self.assertEqual(im.remove_extra_spaces("Hello there I am Tony     "), "Hello there I am Tony")
 
     def test_both(self):
-        self.assertEqual(im.custom_trim("    Hello    there I   am Tony     "), "Hello there I am Tony")
+        self.assertEqual(im.remove_extra_spaces("    Hello    there I   am Tony     "), "Hello there I am Tony")
 
-class OccurrenceTest(ut.TestCase):
+class CountCharsTest(ut.TestCase):
     
     def test_simple_str(self):
-        self.assertEqual(im.find_occurence("Hello folks")['l'], 3)
+        self.assertEqual(im.count_chars("Hello folks")['l'], 3)
 
     def test_mid_str(self):
-        self.assertIn(',', im.find_occurence("Hello there, I am cedric").keys())
+        self.assertIn(',', im.count_chars("Hello there, I am cedric").keys())
 
     def test_complex_str(self):
-        self.assertFalse('-' not in im.find_occurence("Outlandish-fantastic"))
+        self.assertFalse('-' not in im.count_chars("Outlandish-fantastic"))
 
 class NestedListTest(ut.TestCase):
 
